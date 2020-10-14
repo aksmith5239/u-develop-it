@@ -1,0 +1,11 @@
+//database connection file
+const sqlite3 = require('sqlite3').verbose();
+
+const db = new sqlite3.Database('./db/election.db', err => {
+    if(err) {
+        return console.error(err.messsage);
+    }
+    console.log('Connected to the election database');
+});
+
+module.exports = db;
