@@ -4,16 +4,15 @@ const app = express();
 const db = require('./db/database'); //connection to database
 const inputCheck = require('./utils/inputCheck');
 
-const apiRoutes = require('./routes/apiRoutes');
-app.use('./api', apiRoutes);
 
-// const htmlRoutes = require('./routes/htmlRoutes');
 //middleware
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
+const apiRoutes = require('./routes/apiRoutes');
+app.use('/api', apiRoutes);
 
-
+// const htmlRoutes = require('./routes/htmlRoutes');
 //routes for all parties
 app.get('/api/parties', (req, res) => {
   const sql = `SELECT * FROM parties`;
